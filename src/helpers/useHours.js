@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useMinutes from '../helpers/useMinutes'
 
 
@@ -6,7 +6,6 @@ const useHours = (value = 24) => {
     const { minutes } = useMinutes()
 
     const [hours, setHours] = useState(value)
-    let interval = useRef()
 
     const resultHours = () => setHours((prev) => prev - 1)
 
@@ -16,9 +15,6 @@ const useHours = (value = 24) => {
         }
         if (hours === 0) {
             setHours(24)
-        }
-        return () => {
-            clearInterval(interval.current)
         }
     }, [hours, minutes])
 

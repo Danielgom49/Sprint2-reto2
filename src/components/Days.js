@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyledDay, StyledDiv, StyledP } from '../style/StyledCompnonent'
 import useHours from '../helpers/useHours'
 
@@ -7,7 +7,6 @@ const Days = () => {
     const { hours } = useHours()
 
     const [days, setDays] = useState(14)
-    let interval = useRef()
 
     const resultDays = () => setDays((prev) => prev - 1)
 
@@ -18,10 +17,6 @@ const Days = () => {
         if (days === 0) {
             alert('Terminó')
             setDays(14)
-        }
-
-        return () => {
-            clearInterval(interval.current)
         }
     }, [hours, days])
 
